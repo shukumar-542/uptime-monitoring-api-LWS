@@ -29,25 +29,27 @@ handler.handleReqRes = (req,res)=>{
 
       const chosenHandlers =  routes[trimedPath] ? routes[trimedPath] : notFoundHandle;
 
-      chosenHandlers(requestProperties , (statusCode,payload)=>{
-          statusCode = typeof(statusCode) === 'number' ? statusCode: 500;
-          payload = typeof(payload) === 'object' ? payload :{};
-          
-          const payloadStringify = JSON.stringify(payload);
-
-          // return final response
-
-          res.writeHead(statusCode);
-          res.end(payloadStringify);
-      })
-
+   
        req.on('data', (buffer)=>{
             realData += decoder.write(buffer)
        })
        req.on('end',()=>{
-            realData += decoder.end()
-            console.log(realData);
-            res.end('hello can you here me shukumar ghosh??');
+            realData += decoder.end();
+
+            chosenHandlers(requestProperties , (statusCode,payload)=>{
+                statusCode = typeof(statusCode) === 'number' ? statusCode: 500;
+                payload = typeof(payload) === 'object' ? payload :{};
+                
+                const payloadStringify = JSON.stringify(payload);
+      
+                // return final response
+      
+                res.writeHead(statusCode);
+                res.end(payloadStringify);
+            });
+      
+            // console.log(realData);
+            // res.end('hello world !!');
 
        })
 

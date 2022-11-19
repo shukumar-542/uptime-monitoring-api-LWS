@@ -5,10 +5,13 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" :"nodemon index"
+    "start": "SET \"NODE_ENV=staging\" && node index",
+    "production": "SET \"NODE_ENV=production\" && node index"
   },
   "dependencies": {
-    
     "node": "^19.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
