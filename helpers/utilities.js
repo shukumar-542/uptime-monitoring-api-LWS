@@ -29,4 +29,23 @@ utitlities.hash =(str) =>{
             return false;
       }
 }
+
+utitlities.randomString=(strLength)=>{
+      let length = strLength;
+      length = typeof strLength === 'number' && strLength > 0 ? strLength : false;
+     if(length){
+      const possiblechar = 'abcdefghijklmnopqrstuvwxyz1234567890';
+
+      let output ='';
+      for(i=1; i<=length; i +=1){
+            let randomChar = possiblechar.charAt(Math.floor(Math.random()*possiblechar.length))
+            output += randomChar;
+            
+      }
+      return output;
+
+     }
+     return false;
+
+}
 module.exports =utitlities;
