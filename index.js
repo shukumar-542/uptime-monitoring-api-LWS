@@ -9,11 +9,11 @@ const app = {};
 
 
 // testing for file system
-data.delete('test','newfile',(err)=>{
-      console.log(err);
-});
+// data.delete('test','newfile',(err)=>{
+//       console.log(err);
+// });
 
-//configration
+// //configration
 // app.config ={
 //       port : 3000,
 // };
